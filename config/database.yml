@@ -1,0 +1,12 @@
+common: &common
+  adapter: postgresql
+  encoding: unicode
+  min_messages: warning
+
+development: &development
+  <<: *common
+  database: sti_development
+
+test: &test
+  <<: *common
+  database: sti_test
