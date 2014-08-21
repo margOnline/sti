@@ -39,7 +39,7 @@ class AnimalsController < ApplicationController
   end
 
   def race_class
-    race.constantize if type.in? race_classes
+    race.constantize
   end
 
   def set_animal
