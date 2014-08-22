@@ -1,4 +1,3 @@
-
 <div class="container">
   <h3>The Lion Tribe</h3>
   <table class="table">
@@ -10,20 +9,27 @@
         <th></th>
         <th></th>
         <th></th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
       <% @animals.each do |animal| %>
       <tr>
         <td><%= animal.name %></td>
-        <td><%= animal.race %></td>
+        <td><%= animal.race.demodulize %></td>
         <td><%= animal.age %></td>
         <td><%= link_to 'Show', "" %></td>
         <td><%= link_to 'Edit', "" %></td>
         <td><%= link_to 'Destroy', "", :method => :delete,
-          :data => { :confirm => 'Are you sure?' } %></td>
+          :data => { :confirm => 'Are you sure?' } %>
+        </td>
+        <td><%= link_to "See all #{animal.race.pluralize}",
+          sti_animal_path(animal.race) %>
+        </td>
       </tr>
       <% end %>
     </tbody>
   </table>
+  <%= link_to 'See all animals', sti_animal_path %>
+  <%= link_to "New #{@race}", sti_animal_path(@race, nil, :new) %>
 </div>

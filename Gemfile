@@ -14,7 +14,18 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
 gem 'pg'
-gem 'pry'
 gem 'twitter'
+
+group :test do
+  gem 'capybara'
+  gem 'execjslint'
+  gem 'factory_girl_rails'
+  gem 'fakeweb'
+  gem 'flexmock', :require => 'flexmock/test_unit'
+  gem 'launchy'
+  gem 'minitest'
+  gem 'pry'
+  gem 'shoulda'
+end
 
 

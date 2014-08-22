@@ -2,7 +2,7 @@ class Animal < ActiveRecord::Base
   belongs_to :tribe
   self.inheritance_column = :race
 
-  validates :race, :presence => true
+  validates :race, :name, :presence => true
 
   scope :lions, -> { where(:race => 'Lion') }
   scope :meerkats, -> { where(:race => 'Meerkat') }
@@ -10,7 +10,7 @@ class Animal < ActiveRecord::Base
 
   ### Class methods  ###
   def self.races
-    %w(lion wild_boar meekat)
+    %w(lion wild_boar meerkat)
   end
 
   ### Instance methods  ###

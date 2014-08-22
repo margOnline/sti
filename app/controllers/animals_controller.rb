@@ -11,12 +11,21 @@ class AnimalsController < ApplicationController
   end
 
   def new
-  end
-
-  def edit
+    @animal = race_class.new
   end
 
   def create
+    @animal = Animal.new(animal_params)
+    if @animal.save
+      flash[:notice] = "#{race} created successfully"
+      redirect_to @animal
+    else
+      flash[:error] = 'There was a problem creating the new animal'
+      render :new
+    end
+  end
+
+  def edit
   end
 
   def update
@@ -26,6 +35,11 @@ class AnimalsController < ApplicationController
   end
 
   private
+
+  def animal_params
+    params.require(race.underscore.to_sym).permit(:race, :name, :age)
+  end
+
   def race_classes
     %w(Animal Lion Meerkat WildBoar)
   end

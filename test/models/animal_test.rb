@@ -1,7 +1,9 @@
 require 'test_helper'
 
 class AnimalTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+
+  should belong_to :tribe
+  should validate_presence_of :race
+  should validate_presence_of :name
+
 end
