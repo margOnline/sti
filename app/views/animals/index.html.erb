@@ -1,5 +1,5 @@
 <div class="container">
-  <h3>The Lion Tribe</h3>
+  <h3>The <%= Tribe.first.name %> Tribe</h3>
   <table class="table">
     <thead>
       <tr>
@@ -16,20 +16,20 @@
       <% @animals.each do |animal| %>
       <tr>
         <td><%= animal.name %></td>
-        <td><%= animal.race.demodulize %></td>
+        <td><%= format_race(animal.race.demodulize) %></td>
         <td><%= animal.age %></td>
-        <td><%= link_to 'Show', "" %></td>
-        <td><%= link_to 'Edit', "" %></td>
+        <td><%= link_to 'Show', sti_animal_path(animal.race, animal) %></td>
+        <td><%= link_to 'Edit', sti_animal_path(animal.race, animal, :edit) %></td>
         <td><%= link_to 'Destroy', "", :method => :delete,
           :data => { :confirm => 'Are you sure?' } %>
         </td>
-        <td><%= link_to "See all #{animal.race.pluralize}",
+        <td><%= link_to "See all #{format_race(animal.race).pluralize}",
           sti_animal_path(animal.race) %>
         </td>
       </tr>
       <% end %>
     </tbody>
   </table>
-  <%= link_to 'See all animals', sti_animal_path %>
-  <%= link_to "New #{@race}", sti_animal_path(@race, nil, :new) %>
+  <p><%= link_to 'See all animals', sti_animal_path, :class => 'button' %></p>
+  <p><%= link_to "New #{format_race(@race)}", sti_animal_path(@race, nil, :new) %></p>
 </div>

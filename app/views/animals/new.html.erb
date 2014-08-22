@@ -1,5 +1,5 @@
 <div class="container">
-  <h3>New <%= "#{@race.capitalize}" %></h3>
+  <h3>New <%= "#{format_race(@race)}" %></h3>
   <%= render 'form' %>
   <%= link_to 'Back', sti_animal_path(@race) %>
 </div>

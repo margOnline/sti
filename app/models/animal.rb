@@ -10,7 +10,7 @@ class Animal < ActiveRecord::Base
 
   ### Class methods  ###
   def self.races
-    %w(lion wild_boar meerkat)
+    %w(Lion WildBoar Meerkat)
   end
 
   ### Instance methods  ###

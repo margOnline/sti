@@ -8,8 +8,12 @@ module AnimalsHelper
     action || animal ? "#{format_action(action)}#{race.underscore}" : "#{race.underscore.pluralize}"
   end
 
-  def format_action
+  def format_action(action)
     action ? "#{action}_" : ""
+  end
+
+  def format_race(race)
+    race.underscore.humanize.titleize
   end
 
 end

@@ -1,5 +1,5 @@
 <div class="container">
-  <h2>Hi, I'm a <%= @animal.race %></h2>
+  <h2>Hi, I'm a <%= @animal.race.underscore.humanize.titleize %></h2>
   <p>My name is <%= @animal.name %></p>
   <%= @animal.talk %>
 </div>

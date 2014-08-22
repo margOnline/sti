@@ -17,10 +17,10 @@ class AnimalsController < ApplicationController
   def create
     @animal = Animal.new(animal_params)
     if @animal.save
-      flash[:notice] = "#{race} created successfully"
+      flash[:notice] = "#{race} created successfully."
       redirect_to @animal
     else
-      flash[:error] = 'There was a problem creating the new animal'
+      flash[:error] = 'There was a problem creating the new animal.'
       render :new
     end
   end
@@ -29,19 +29,24 @@ class AnimalsController < ApplicationController
   end
 
   def update
+    if @animal.update(animal_params)
+      flash[:notice] = "#{race} was updated sucessfully."
+      redirect_to @animal
+    else
+      flash[:notice] = "#{@animal.name} could not be updated."
+      render :edit
+    end
   end
 
   def destroy
+    @animal.destroy
+    redirect_to animals_url
   end
 
   private
 
   def animal_params
     params.require(race.underscore.to_sym).permit(:race, :name, :age)
-  end
-
-  def race_classes
-    %w(Animal Lion Meerkat WildBoar)
   end
 
   def set_race
@@ -53,7 +58,7 @@ class AnimalsController < ApplicationController
   end
 
   def race_class
-    race.constantize
+    race.camelize.constantize
   end
 
   def set_animal
