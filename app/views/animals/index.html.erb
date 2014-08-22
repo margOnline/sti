@@ -20,7 +20,7 @@
         <td><%= animal.age %></td>
         <td><%= link_to 'Show', sti_animal_path(animal.race, animal) %></td>
         <td><%= link_to 'Edit', sti_animal_path(animal.race, animal, :edit) %></td>
-        <td><%= link_to 'Destroy', "", :method => :delete,
+        <td><%= link_to 'Delete', sti_animal_path(animal.race, animal), :method => :delete,
           :data => { :confirm => 'Are you sure?' } %>
         </td>
         <td><%= link_to "See all #{format_race(animal.race).pluralize}",
